@@ -1,6 +1,6 @@
 import { Navbar as RBNavbar, Nav, Container, Button } from 'react-bootstrap';
 
-const Navbar = () => {
+const NavBar = () => {
   const total = 25000;
   const token = false;
 
@@ -16,16 +16,11 @@ const Navbar = () => {
             <Nav.Link href="#productos" className="text-white">Productos</Nav.Link>
             <Nav.Link href="#contacto" className="text-white">Contacto</Nav.Link>
           </Nav>
-
-
-          <div className="d-flex align-items-center">
-            {/* Sección 1 */}
+        <div className="d-flex align-items-center">
             <div className="d-flex align-items-center gap-2">
               <Button variant="outline-light">Login</Button>
               <Button variant="warning" className="fw-bold">Registro</Button>
-            </div>
-
-            {/* Sección 2 */}
+          </div>
             <div className="d-flex align-items-center ms-4">
               <span className="me-3 text-light">Total: ${total}</span>
               <span className="text-light">
@@ -39,4 +34,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
