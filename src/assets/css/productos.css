@@ -1,0 +1,66 @@
+.product-card {
+  background: #1a1a1f;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+
+  width: 100%;
+  max-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-body h5 {
+  margin-bottom: 0.5rem;
+}
+
+.product-body p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+
+.product-body strong {
+  color: #f5c16c; /* dorado tipo e-commerce */
+  font-size: 1.1rem;
+}
+
+.product-body h5 {
+  color: #ffffff;
+}
+
+
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}

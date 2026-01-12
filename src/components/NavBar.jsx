@@ -1,33 +1,68 @@
-import { Navbar as RBNavbar, Nav, Container, Button } from 'react-bootstrap';
+import { Link, NavLink } from "react-router-dom";
+import { Navbar as RBNavbar, Nav, Container, Button, Badge } from "react-bootstrap";
 
-const NavBar = () => {
-  const total = 25000;
-  const token = false;
+const NavBar = ({ pizzaCart = [] }) => {
+
+  const total = pizzaCart.reduce(
+    (acc, pizza) => acc + pizza.price * pizza.count,
+    0
+  );
+
+  const quantity = pizzaCart.reduce(
+    (acc, pizza) => acc + pizza.count,
+    0
+  );
 
   return (
-    <RBNavbar bg="dark" variant="dark" expand="lg" className="mb-0 shadow-sm">
+    <RBNavbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
-        <RBNavbar.Brand href="#home" className="text-warning fw-bold">
-          Pizzería Mamma Mia!
+        <RBNavbar.Brand as={Link} to="/" className="text-warning fw-bold">
+          🍕 Pizzería Mamma Mia!
         </RBNavbar.Brand>
-        <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
-        <RBNavbar.Collapse id="basic-navbar-nav">
+
+        <RBNavbar.Toggle />
+        <RBNavbar.Collapse>
+
           <Nav className="me-auto">
-            <Nav.Link href="#productos" className="text-white">Productos</Nav.Link>
-            <Nav.Link href="#contacto" className="text-white">Contacto</Nav.Link>
+            <Nav.Link as={NavLink} to="/productos">
+              Productos
+            </Nav.Link>
           </Nav>
-        <div className="d-flex align-items-center">
-            <div className="d-flex align-items-center gap-2">
-              <Button variant="outline-light">Login</Button>
-              <Button variant="warning" className="fw-bold">Registro</Button>
+
+          <div className="d-flex gap-3 align-items-center">
+
+            {/* CARRITO */}
+            <Button
+              as={Link}
+              to="/cart"
+              variant="outline-warning"
+              className="position-relative"
+            >
+              🛒 Carrito
+              {quantity > 0 && (
+                <Badge
+                  bg="danger"
+                  className="position-absolute top-0 start-100 translate-middle"
+                >
+                  {quantity}
+                </Badge>
+              )}
+            </Button>
+
+            <span className="text-warning fw-bold">
+              ${total}
+            </span>
+
+            <Button as={Link} to="/login" variant="outline-light">
+              Login
+            </Button>
+
+            <Button as={Link} to="/register" variant="warning">
+              Registro
+            </Button>
+
           </div>
-            <div className="d-flex align-items-center ms-4">
-              <span className="me-3 text-light">Total: ${total}</span>
-              <span className="text-light">
-                {token ? 'Usuario autenticado' : 'Invitado'}
-              </span>
-            </div>
-          </div>
+
         </RBNavbar.Collapse>
       </Container>
     </RBNavbar>

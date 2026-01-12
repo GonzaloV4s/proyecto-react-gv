@@ -10,3 +10,23 @@
   width: 100%;
   height: 300px;
 }
+
+/* Ocupa toda la altura del navegador */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding-top: 70px;
+}
+
+
+/* Layout principal */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenido crece y empuja el footer */
+.content {
+  flex: 1;
+}
