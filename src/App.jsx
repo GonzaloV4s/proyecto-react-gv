@@ -20,10 +20,8 @@ function App() {
 
   return (
     <div className="d-flex flex-column min-vh-100 w-100">
-      {/* Navbar fijo arriba */}
       <NavBar pizzaCart={pizzaCart} />
 
-      {/* Main ocupa todo el ancho y se separa del navbar */}
       <main
         className="flex-fill w-100"
         style={{ paddingTop: "56px" }}  // altura del navbar
