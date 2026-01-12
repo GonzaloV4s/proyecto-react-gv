@@ -12,7 +12,6 @@ const RegisterPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validaciones
     if (!email || !pass || !confirm) {
       setMsg("Todos los campos son obligatorios.");
       setType("danger");
@@ -31,8 +30,7 @@ const RegisterPage = () => {
       return;
     }
 
-    // Si todo está correcto
-    setMsg("Registro exitoso 🎉");
+    setMsg("Registro exitoso");
     setType("success");
   };
 
