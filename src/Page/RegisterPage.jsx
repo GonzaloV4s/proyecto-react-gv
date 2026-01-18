@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
+import AuthLayout from "../components/AuthLayout";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ const RegisterPage = () => {
     }
 
     if (pass.length < 6) {
-      setMsg("El password debe tener al menos 6 caracteres.");
+      setMsg("La contraseña debe tener al menos 6 caracteres.");
       setType("danger");
       return;
     }
@@ -30,21 +31,19 @@ const RegisterPage = () => {
       return;
     }
 
-    setMsg("Registro exitoso");
+    setMsg("Registro exitoso ✔");
     setType("success");
   };
 
   return (
-    <div className="container mt-4" style={{ maxWidth: "400px" }}>
-      <h2 className="mb-3">Registro</h2>
-
+    <AuthLayout title="Registro">
       {msg && <Alert variant={type}>{msg}</Alert>}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Email</Form.Label>
-          <Form.Control 
-            type="email" 
+          <Form.Control
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="usuario@example.com"
@@ -52,9 +51,9 @@ const RegisterPage = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-            type="password" 
+          <Form.Label>Contraseña</Form.Label>
+          <Form.Control
+            type="password"
             value={pass}
             onChange={(e) => setPass(e.target.value)}
             placeholder="******"
@@ -62,9 +61,9 @@ const RegisterPage = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Confirmar Password</Form.Label>
-          <Form.Control 
-            type="password" 
+          <Form.Label>Confirmar contraseña</Form.Label>
+          <Form.Control
+            type="password"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
             placeholder="******"
@@ -75,7 +74,7 @@ const RegisterPage = () => {
           Registrarse
         </Button>
       </Form>
-    </div>
+    </AuthLayout>
   );
 };
 

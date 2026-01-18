@@ -1,25 +1,37 @@
-import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const Producto = ({ pizza }) => {
-  const { id, nombre, precio, imagen, ingredientes = [] } = pizza;
+  const { addToCart } = useCart();
 
   return (
-    <div className="product-card">
-      <img src={imagen} alt={nombre} className="product-img" />
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+      <div className="product-card">
+        <img
+          src={pizza.imagen}
+          alt={pizza.nombre}
+          className="product-img"
+        />
 
-      <div className="product-body">
-        <h5>{nombre}</h5>
+        {/* 👇 ESTE CONTENEDOR ES CLAVE */}
+        <div className="product-body">
+          <h5>{pizza.nombre}</h5>
 
-        <p>{ingredientes.join(", ")}</p>
+          <p className="product-ingredients">
+            {pizza.ingredientes.join(", ")}
+          </p>
 
-        <strong>${precio}</strong>
+          {/* 👇 SE PEGA ABAJO */}
+          <strong className="product-price">
+            ${pizza.precio}
+          </strong>
 
-        <div className="product-actions">
-          <Link to={`/pizza/${id}`} className="btn btn-outline-light">
-            Ver más
-          </Link>
-
-          <button className="btn btn-warning">Añadir</button>
+          {/* 👇 BOTÓN FUNCIONAL */}
+          <button
+            className="btn btn-warning w-100 mt-2"
+            onClick={() => addToCart(pizza)}
+          >
+            Añadir
+          </button>
         </div>
       </div>
     </div>

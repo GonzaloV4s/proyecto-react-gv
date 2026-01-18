@@ -1,14 +1,39 @@
 .product-card {
-  background: #1a1a1f;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-
   width: 100%;
-  max-width: 300px;
-
+  max-width: 260px;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  transition: transform 0.2s ease;
+}
+
+/* Contenido */
+.product-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 🔥 ocupa todo el espacio */
+  padding: 12px;
+}
+
+/* Ingredientes */
+.product-ingredients {
+  min-height: 48px;
+  line-height: 1.4;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+/* 💰 Precio */
+.product-price {
+  margin-top: auto;      /* 🔥 empuja hacia abajo */
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .product-img {
@@ -63,4 +88,11 @@ html, body {
   max-width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.product-ingredients {
+  min-height: 48px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

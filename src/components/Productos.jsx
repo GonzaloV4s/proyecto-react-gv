@@ -1,7 +1,6 @@
 import Producto from "./Producto";
 import "../assets/css/productos.css";
 
-
 import margaritaImg from "../assets/img/margarita.jpg";
 import peperoniImg from "../assets/img/peperoni.jpg";
 import cquesosiImg from "../assets/img/4quesos.jpg";
@@ -15,7 +14,7 @@ export const listaProductos = [
     nombre: "Pizza Margarita",
     precio: 1000,
     imagen: margaritaImg,
-    ingredientes: ["Tomate", "Mozzarella", "Albahaca", "Aceite de oliva"],
+    ingredientes: ["Tomate", "Mozzarella", "Albahaca"],
   },
   {
     id: "p002",
@@ -36,7 +35,7 @@ export const listaProductos = [
     nombre: "Pizza Vegetariana",
     precio: 2500,
     imagen: vgiImg,
-    ingredientes: ["Tomate", "Mozzarella", "Pimentón", "Champiñones", "Aceitunas"],
+    ingredientes: ["Tomate", "Mozzarella", "Champiñones"],
   },
   {
     id: "p005",
@@ -50,21 +49,21 @@ export const listaProductos = [
     nombre: "Pizza BBQ",
     precio: 3200,
     imagen: bbqiImg,
-    ingredientes: ["BBQ", "Mozzarella", "Pollo", "Cebolla morada"],
+    ingredientes: ["BBQ", "Mozzarella", "Pollo"],
   },
 ];
 
-const Productos = () => {
+const Productos = ({ pizzaCart, setPizzaCart }) => {
   return (
     <div className="container-fluid py-4">
       <div className="row g-4 justify-content-center">
         {listaProductos.map((pizza) => (
-          <div
+          <Producto
             key={pizza.id}
-            className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
-          >
-            <Producto pizza={pizza} />
-          </div>
+            pizza={pizza}
+            pizzaCart={pizzaCart}
+            setPizzaCart={setPizzaCart}
+          />
         ))}
       </div>
     </div>

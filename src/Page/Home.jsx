@@ -1,11 +1,14 @@
 import Header from "../components/Header";
 import Productos from "../components/Productos";
 
-const Home = () => {
+const Home = ({ pizzaCart, setPizzaCart }) => {
   return (
     <>
       <Header />
-      <Productos />
+      <Productos
+        pizzaCart={pizzaCart}
+        setPizzaCart={setPizzaCart}
+      />
     </>
   );
 };

@@ -1,42 +1,18 @@
 import "../assets/css/cart.css";
+import { useCart } from "../context/CartContext";
 
-const Cart = ({ pizzaCart, setPizzaCart }) => {
-  const increase = (id) => {
-    setPizzaCart(
-      pizzaCart.map((pizza) =>
-        pizza.id === id
-          ? { ...pizza, count: pizza.count + 1 }
-          : pizza
-      )
-    );
-  };
-
-  const decrease = (id) => {
-    setPizzaCart(
-      pizzaCart
-        .map((pizza) =>
-          pizza.id === id
-            ? { ...pizza, count: pizza.count - 1 }
-            : pizza
-        )
-        .filter((pizza) => pizza.count > 0)
-    );
-  };
-
-  const total = pizzaCart.reduce(
-    (acc, pizza) => acc + pizza.precio * pizza.count,
-    0
-  );
+const Cart = () => {
+  const { cart, increase, decrease, total } = useCart();
 
   return (
     <div className="cart">
       <h2>🛒 Tu carrito</h2>
 
-      {pizzaCart.length === 0 && (
+      {cart.length === 0 && (
         <p className="cart-empty">Carrito vacío</p>
       )}
 
-      {pizzaCart.map((pizza) => (
+      {cart.map((pizza) => (
         <div key={pizza.id} className="cart-item">
           <img src={pizza.imagen} alt={pizza.nombre} />
 
