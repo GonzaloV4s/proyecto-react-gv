@@ -12,7 +12,7 @@ const Producto = ({ pizza }) => {
           className="product-img"
         />
 
-        {/* 👇 ESTE CONTENEDOR ES CLAVE */}
+
         <div className="product-body">
           <h5>{pizza.nombre}</h5>
 
@@ -20,12 +20,10 @@ const Producto = ({ pizza }) => {
             {pizza.ingredientes.join(", ")}
           </p>
 
-          {/* 👇 SE PEGA ABAJO */}
           <strong className="product-price">
             ${pizza.precio}
           </strong>
 
-          {/* 👇 BOTÓN FUNCIONAL */}
           <button
             className="btn btn-warning w-100 mt-2"
             onClick={() => addToCart(pizza)}

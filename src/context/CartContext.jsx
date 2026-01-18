@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from "react";
 
-// 1️⃣ Crear el contexto
+// Crear el contexto
 const CartContext = createContext();
 
-// 2️⃣ Provider
+// Provider
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // ➕ Agregar producto
+  // Agregar producto
   const addToCart = (pizza) => {
     const exists = cart.find((p) => p.id === pizza.id);
 
@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // ➕➖ Actualizar cantidad
+  // Actualizar cantidad
   const increase = (id) => {
     setCart(
       cart.map((p) =>
@@ -52,7 +52,7 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  // 💰 Total
+  // Total
   const total = cart.reduce(
     (acc, p) => acc + p.precio * p.count,
     0
@@ -73,5 +73,5 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-// 3️⃣ Hook personalizado
+// Hook personalizado
 export const useCart = () => useContext(CartContext);
