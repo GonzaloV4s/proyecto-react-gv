@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
-import { Navbar as RBNavbar, Container, Button, Badge } from "react-bootstrap";
+import {
+  Navbar as RBNavbar,
+  Container,
+  Button,
+  Badge,
+} from "react-bootstrap";
+
 import { useCart } from "../context/CartContext";
+import { useUser } from "../context/UserContext";
 
 const NavBar = () => {
   const { cart, total } = useCart();
+  const { token, logout } = useUser(); // 👈 UserContext
 
   const quantity = cart.reduce(
     (acc, p) => acc + p.count,
@@ -13,11 +21,20 @@ const NavBar = () => {
   return (
     <RBNavbar bg="dark" variant="dark" fixed="top">
       <Container>
-        <RBNavbar.Brand as={Link} to="/" className="text-warning fw-bold">
+
+        {/* LOGO */}
+        <RBNavbar.Brand
+          as={Link}
+          to="/"
+          className="text-warning fw-bold"
+        >
           🍕 Pizzería Mamma Mia!
         </RBNavbar.Brand>
 
+        {/* DERECHA */}
         <div className="ms-auto d-flex align-items-center gap-3">
+
+          {/* CARRITO */}
           <Button
             as={Link}
             to="/cart"
@@ -35,17 +52,52 @@ const NavBar = () => {
             )}
           </Button>
 
+          {/* TOTAL */}
           <span className="text-warning fw-bold">
             ${total}
           </span>
 
-          <Button as={Link} to="/login" variant="outline-light">
-            Login
-          </Button>
+          {/* AUTENTICACIÓN */}
+          {token ? (
+            <>
+              {/* PERFIL */}
+              <Button
+                as={Link}
+                to="/profile"
+                variant="outline-light"
+              >
+                Perfil
+              </Button>
 
-          <Button as={Link} to="/register" variant="warning">
-            Registro
-          </Button>
+              {/* LOGOUT */}
+              <Button
+                variant="danger"
+                onClick={logout}
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              {/* LOGIN */}
+              <Button
+                as={Link}
+                to="/login"
+                variant="outline-light"
+              >
+                Login
+              </Button>
+
+              {/* REGISTRO */}
+              <Button
+                as={Link}
+                to="/register"
+                variant="warning"
+              >
+                Registro
+              </Button>
+            </>
+          )}
         </div>
       </Container>
     </RBNavbar>

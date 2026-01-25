@@ -20,6 +20,9 @@
   color: #aaa;
 }
 
+.product-card {
+  cursor: pointer;
+}
 /* Item */
 .cart-item {
   display: flex;
